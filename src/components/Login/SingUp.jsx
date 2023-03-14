@@ -1,26 +1,12 @@
 import React from "react";
 
-import {createUseStyles} from 'react-jss'
-
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-import Link from '@mui/material/Link';
-import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import DialogTitle from '@mui/material/DialogTitle';
 
-const useStyles = createUseStyles({
-  textLink: {
-    cursor: 'pointer',
-  }
-})
-
-const SingIn = ({handleClickInicioRegistrar}) => {
-  const classes = useStyles();
-  
-  const handleSubmitSingIn = (event) => {
+const SingUp = () => {
+  const handleSubmitSingUp = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     console.log({
@@ -39,11 +25,19 @@ const SingIn = ({handleClickInicioRegistrar}) => {
       }}
     >
       <DialogTitle id="form-dialog-title">
-        Iniciar sesión
+        Registrarse
       </DialogTitle>
-      {/* <Box component="form" onSubmit={handleSubmitSingIn} noValidate sx={{ mt: 1 }}> Form */}
-      
-      <form onSubmit={handleSubmitSingIn}>
+      <Box component="form" onSubmit={handleSubmitSingUp} noValidate sx={{ mt: 1 }}> {/* Form */}
+        <TextField
+          margin="normal"
+          required
+          fullWidth
+          id="name"
+          label="Nombre"
+          name="name"
+          autoComplete="name"
+          autoFocus
+        />
         <TextField
           margin="normal"
           required
@@ -52,7 +46,6 @@ const SingIn = ({handleClickInicioRegistrar}) => {
           label="Correo electrónico"
           name="email"
           autoComplete="email"
-          autoFocus
         />
         <TextField
           margin="normal"
@@ -64,9 +57,15 @@ const SingIn = ({handleClickInicioRegistrar}) => {
           id="password"
           autoComplete="current-password"
         />
-        <FormControlLabel
-          control={<Checkbox value="remember" color="primary" />}
-          label="Recordarme"
+        <TextField
+          margin="normal"
+          required
+          fullWidth
+          name="repeat_password"
+          label="Contraseña"
+          type="password"
+          id="password"
+          autoComplete="current-password"
         />
         <Button
           type="submit"
@@ -74,27 +73,11 @@ const SingIn = ({handleClickInicioRegistrar}) => {
           variant="contained"
           sx={{ mt: 3, mb: 2 }}
         >
-          Iniciar Sesión
+          Registrarse
         </Button>
-        <Grid container>
-          <Grid item xs>
-            <Link href="#" variant="body2">
-              ¿Olvidaste tu contraseña?
-            </Link>
-          </Grid>
-          <Grid item>
-            <Link 
-              className={classes.textLink}
-              onClick={handleClickInicioRegistrar}
-            >
-              {"Registrarse"}
-            </Link>
-          </Grid>
-        </Grid>
-      </form>
-      {/* </Box> */}
+      </Box>
     </Box>
   );
 }
 
-export default SingIn;
+export default SingUp;

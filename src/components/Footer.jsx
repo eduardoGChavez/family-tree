@@ -15,8 +15,8 @@ const Footer = () => {
   return (
     <div className={classes.myLabel}>
       <Typography>
-        Soy un footer uwu
-      </Typography>;
+        *** Soy un footer uwu ***
+      </Typography>
     </div>
   );
 }
